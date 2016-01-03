@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Raw:
+  = @airfoil.raw
+p
+  strong Coordinates:
+  = @airfoil.coordinates
+p
+  strong Top:
+  = @airfoil.top
+p
+  strong Bottom:
+  = @airfoil.bottom
+p
+  strong Name:
+  = @airfoil.name
+p
+  strong Comment:
+  = @airfoil.comment
+p
+  strong Fixes:
+  = @airfoil.fixes
+
+= link_to 'Edit', edit_airfoil_path(@airfoil)
+'|
+= link_to 'Back', airfoils_path

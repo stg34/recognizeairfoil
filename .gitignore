@@ -1,0 +1,11 @@
+/.bundle
+/log/*
+!/log/.keep
+/tmp
+/.idea/
+/data/etalon
+/data/isoar.ca
+/data/uiuc_airfoils
+/data/uiuc_airfoils.fixed.1
+/data/uiuc_airfoils.fixed.unfixed
+/config/environments/production.rb.example

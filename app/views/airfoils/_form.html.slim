@@ -1,0 +1,30 @@
+= form_for @airfoil do |f|
+  - if @airfoil.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@airfoil.errors.count, "error")} prohibited this airfoil from being saved:"
+      ul
+        - @airfoil.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :raw
+    = f.text_area :raw
+  .field
+    = f.label :coordinates
+    = f.text_field :coordinates
+  .field
+    = f.label :top
+    = f.text_field :top
+  .field
+    = f.label :bottom
+    = f.text_field :bottom
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :comment
+    = f.text_area :comment
+  .field
+    = f.label :fixes
+    = f.text_area :fixes
+  .actions = f.submit

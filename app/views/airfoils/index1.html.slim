@@ -1,0 +1,23 @@
+h1 Listing airfoils
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @airfoils.each do |airfoil|
+      tr
+        td = airfoil.coords.size
+        td
+          = image_tag "data:image/svg+xml;base64,#{airfoil.svg(true)}"
+        td = airfoil.name
+        td = link_to 'Show', 'airfoil'
+        td = link_to 'Edit', 'edit_airfoil_path(airfoil)'
+        td = link_to 'Destroy', "airfoil, data: {:confirm => 'Are you sure?'}, :method => :delete"
+
+br
+
+= link_to 'New Airfoil', 'new_airfoil_path'

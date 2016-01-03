@@ -1,0 +1,14 @@
+h1 Airfoils
+
+table.table
+  tbody
+    - @airfoils.each do |airfoil|
+      tr
+        td
+          = image_tag "data:image/svg+xml;base64,#{@raw_images[airfoil]}"
+          br
+          = airfoil.name
+
+br
+
+= will_paginate @airfoils

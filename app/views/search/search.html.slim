@@ -1,0 +1,68 @@
+h1 = @check_result ? 'Search result' : 'Airfoil search'
+- unless @afc
+
+  .row.placeholders
+    .col-xs-6.col-md-4
+      a.thumbnail href="/images/step1.png"
+        img src="/images/step1.png" width="100%"
+      h2 Step 1
+    .col-xs-6.col-md-4
+      a.thumbnail href="/images/step2.png"
+        img src="/images/step2.png" width="100%"
+      h2 Step 2
+    .col-xs-6.col-md-4
+      a.thumbnail href="/images/step3.png"
+        img src="/images/step3.png" width="100%"
+      h2 Step 3
+
+  br
+
+- if @svg
+  h2 Your airfoil
+- if @svg.present?
+  = image_tag "data:image/svg+xml;base64,#{@svg}"
+  hr
+
+- if @check_result == false
+  - @afc.errors.select{|e| e.kind_of? AirfoilChecker::AirfoilUncorrectableError }.select{ |e| e.line_num.blank?}.each do |e|
+    = e.message
+  table.table
+    thead
+      tr
+        th X
+        th Y
+        th Error
+    tbody
+      - @afc.lines.each_with_index do |line, i|
+        - error = @afc.uncorrectable_errors.find{|e| e.line_num == i + 1}
+        tr style="background-color: #{error ? '#FCC' : ''}"
+          - pair = is_pair_of_floats?(line)
+          - if pair
+            td = pair[0].round(4)
+            td = pair[0].round(4)
+            td
+              = error.try(:message)
+          -else
+            td colspan="2"
+              = line
+            td
+              = error.try(:message)
+
+- if @search_result.present?
+  h3 Airfoils
+  table.table
+    tbody
+      - @search_result.each do |sr|
+        tr
+          td
+            = image_tag "data:image/svg+xml;base64,#{sr[:img]}"
+            br
+            = "#{sr[:af].name}"
+            /= "#{sr[:af].name} (#{sr[:af].id}) -- #{sr[:cmp].round(6)}"
+            /br
+            /'angle:
+            /= sr[:angle].round(3)
+            /br
+            /pre
+            /  = sr[:debug].pretty_inspect
+

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  raw: MyText
+  coordinates: MyString
+  top: MyString
+  bottom: MyString
+  name: MyString
+  comment: MyText
+  fixes: MyText
+
+two:
+  raw: MyText
+  coordinates: MyString
+  top: MyString
+  bottom: MyString
+  name: MyString
+  comment: MyText
+  fixes: MyText
