@@ -3,6 +3,7 @@
 !/log/.keep
 /tmp
 /.idea/
+/.ruby-version
 /data/etalon
 /data/isoar.ca
 /data/uiuc_airfoils
