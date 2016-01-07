@@ -1,11 +1,40 @@
 require 'pp'
 load 'airfoils/airfoil_checker.rb'
 
+
+
 class SearchController < ApplicationController
   #before_action :set_foo, only: [:show, :edit, :update, :destroy]
 
   # GET /search
   # GET /search.json
+Sample = <<SAMPLE
+384 10
+383 13
+360 12
+330 12
+300 14.5
+250 21.5
+200 28.5
+150 33.5
+125 34
+100 33.5
+75 31
+50 23.5
+40 19
+30 13.5
+20 5
+17 -2
+20 -8.5
+30 -11
+60 -11
+266 -10
+290 -9
+320 -7
+350 0
+383 8
+384 10
+SAMPLE
 
   def search
     unless params[:coordinates].blank?
@@ -48,7 +77,7 @@ class SearchController < ApplicationController
       end
 
     end
-    @coordinates = params[:coordinates]
+    @coordinates = params[:coordinates] || Sample
 
   end
 
